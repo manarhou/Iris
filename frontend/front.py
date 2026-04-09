@@ -1,5 +1,8 @@
 import streamlit as st 
 import requests
+import os
+
+API_URL = os.getenv("API_URL", "http://localhost:8000")  # ← variable d'env
 
 st.title("Quelle Iris")
 
@@ -11,7 +14,7 @@ z = st.number_input("Longueur du pétale (cm)", min_value=0.0, max_value=10.0, v
 w  = st.number_input("Largeur du pétale (cm)",  min_value=0.0, max_value=10.0, value=0.2)
 
 if st.button("Prédire"):
-    response = requests.get("http://localhost:8000/predict", params={
+    response = requests.get(f"{API_URL}/predict", params={
     "x": x,
     "y": y,
     "z": z,

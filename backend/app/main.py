@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import joblib
 
-model = joblib.load("/home/manar/Documents/Pipelinecicd/backend/model/modele_iris.pkl")
+model = joblib.load("model/modele_iris.pkl")
 
 app = FastAPI()
 

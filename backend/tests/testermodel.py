@@ -1,15 +1,14 @@
 import joblib
 
-# Charger le modèle
-model = joblib.load("/home/manar/Documents/Pipelinecicd/backend/model/modele_iris.pkl")
+import os
 
+# Chemin relatif depuis la racine du backend
+model = joblib.load(os.path.join(os.path.dirname(__file__), "../model/modele_iris.pkl"))
 
-nouvelle_fleur = [[5.1, 3.5, 1.4, 0.2]]
-prediction = model.predict(nouvelle_fleur)[0] # → [0] = setosa
-print(prediction)  
+def test_prediction_setosa():
+    prediction = model.predict([[5.1, 3.5, 1.4, 0.2]])[0]
+    assert prediction == "setosa" 
 
-
-# tester une prédiction sur une nouvelle fleur
-nouvelle_fleur = [[5.2, 2.2, 3.0,1.2]]  # les 4 mesures
-prediction = model.predict(nouvelle_fleur)[0] # "versicolor"
-print(prediction)  
+def test_prediction_versicolor():
+    prediction = model.predict([[5.2, 2.2, 3.0, 1.2]])[0]
+    assert prediction == "versicolor"
