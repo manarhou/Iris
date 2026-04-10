@@ -20,7 +20,7 @@ if st.button("Prédire"):
     "z": z,
     "w": w
 })
-    st.write(response.json())  # on teste 
+    st.success("Espèce prédite: ", response.json())  # on teste 
 
 
 
