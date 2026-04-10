@@ -19,11 +19,10 @@ if st.button("Prédire"):
     "y": y,
     "z": z,
     "w": w
-})
+    })
     
-    
-result = response.json()
-st.success(f"Espèce prédite: {result['prediction']}")
+    result = response.json()
+    st.success(f"Espèce prédite: {result['prediction']}")
 
 
 
